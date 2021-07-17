@@ -1,0 +1,81 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Đăng nhập {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title">
+            Đăng nhập
+          </h4>
+        </div>
+
+        <div class="card-body">
+ 					{% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{message.tags}}" role="alert">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+          <h6 class="card-category">
+              {% if msg %}
+                <span class="text-danger">{{ msg | safe }}</span>
+              {% else %}
+                  Điền thông tin đăng nhập của bạn
+              {% endif %}  
+          </h6>
+          
+          <br />
+
+          <form role="form" method="post" action="">
+              
+            {% csrf_token %} 
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label >Tên đăng nhập</label>
+                  {{ form.username }}
+                </div>
+              </div>
+            </div>
+
+            <br />
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label >Mật khẩu</label>
+                  {{ form.password }}
+                </div>
+              </div>
+            </div>
+
+            <br />
+
+            <button type="submit" name="login" class="btn btn-primary pull-left">Đăng nhập</button>
+
+            &nbsp; &nbsp; 
+            <span class="pull-right">
+				Bạn chưa có tài khoản? <a href="{% url 'signup' %}" class="text-primary">Đăng ký</a>
+            </span>
+
+            <div class="clearfix"></div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
