@@ -1,0 +1,95 @@
+{% extends 'layouts/base.html' %}
+{% load static  
+{% block title %} Icons {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<!-- Header -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v11.0&appId=821058301783001&autoLogAppEvents=1" nonce="ernjqq4S"></script>
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--7">
+
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header bg-transparent">
+                    <div class="d-flex justify-content-between">
+                    <h3 class="mb-0">Thông tin chi tiết</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6 item-photo">
+                            <img src="{{missing.image.url}}" style="height: 500px; width: auto;"class="img-thumbnail" alt="">
+                        </div>
+                        <div class="col-lg-6">
+                            <h2 id="product-name" style="font-weight: bold; color: navy;">{{ missing.name }}</h1>
+                                <br>
+                                <h3 style="font-weight: bold; color: navy;"> Thông tin mô tả:</h2>
+                                   
+                                    <div class="col-lg-12">
+                                        <h4 style="font-weight: bold;">Giới tính: </h4> 
+                                        <div > 
+                                            <h4>{{missing.gender}}</h4>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-lg-12">
+                                        <h4 style="font-weight: bold;">Mô tả: </h4>
+                                        <div > 
+                                            <h4>{{missing.description}}</h4>
+                                        </div>
+                                    </div>
+                                
+                                <h3 style="font-weight: bold; color: navy;"> Thông tin người liên hệ:</h2>
+                           
+                                <div class="col-lg-12">
+                                    <h4 style="font-weight: bold;">Họ và tên: </h4> 
+                                    <div>
+                                        <a href ="#" class="h4">{{user.last_name}} {{user.first_name}}</a>
+                                    </div>
+                                    
+                                </div>
+                            
+                                <div class="col-lg-12">
+                                    <h4 style="font-weight: bold;">Email:</h4> 
+                                     <div>
+                                        <h4>{{user.email}}</h4>
+                                     </div>
+                                    
+                                </div>
+                            <br>
+                            <div  class="fb-share-button " data-width=""
+                                data-layout="button_count" data-size="large" 
+                                data-share="true">
+                            </div>
+                           
+                        </div>
+                    </div>
+                    
+                    
+
+                    
+                </div>
+            </div>
+
+            
+
+        </div>
+
+        {% endblock content %}
+
+        <!-- Specific JS goes HERE -->
+        {% block javascripts %}{% endblock javascripts %}
+    </div>
+</div>

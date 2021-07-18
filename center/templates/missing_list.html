@@ -14,7 +14,13 @@
         </div>
     </div>
 </div>
-
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-{{message.tags}}" role="alert">
+        {{ message }}
+    </div>
+{% endfor %}
+{% endif %} 
 <div class="container-fluid mt--7">
 
     <div class="row">
@@ -42,7 +48,7 @@
 
                         {% for item in items %}
                         <div class="col-md-3 border px-3 py-3" style="cursor: pointer;">
-                            <a href="/productdetail?missing_people_id={{ item.id }}">
+                            <a href="/missingdetail?missing_id={{ item.id }}">
                                 <img style="height: 300px; width: auto;" src="{{item.image.url}}" class="img-thumbnail" alt="">
                                 <div class="d-flex flex-row justify-content-start">
                                     <a href="#"></a>

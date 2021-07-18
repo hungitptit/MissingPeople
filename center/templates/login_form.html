@@ -4,7 +4,7 @@
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
-
+{% load socialaccount %}
 {% block content %}
 
   <div class="row">
@@ -66,10 +66,10 @@
             <span class="pull-right">
 				Bạn chưa có tài khoản? <a href="{% url 'signup' %}" class="text-primary">Đăng ký</a>
             </span>
-
+			
             <div class="clearfix"></div>
-
-          </form>
+			<a href="{% provider_login_url 'google' %}" class="btn btn-danger">Đăng nhập bằng tài khoản Google</a>
+			
         </div>
       </div>
     </div>

@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, request
 from .forms import *
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 @login_required(login_url='/login') # Check login
@@ -52,7 +53,8 @@ def login_form(request):
             userprofile=UserProfile.objects.get(user_id=current_user.id)
             request.session['userimage'] = userprofile.image.url
             # Redirect to a success page.
-            return HttpResponseRedirect('/')
+            messages.success(request,'Đăng nhập thành công với tài khoản '+str(current_user))
+            return HttpResponseRedirect('/missing')
         else:
             messages.warning(request,"Đăng nhập không thành công !! Sai tên đăng nhập hoặc mật khẩu")
             return HttpResponseRedirect('/login')
@@ -96,7 +98,7 @@ def signup(request):
 def missing_list(request):
 
     missing_list = MissingPeople.objects.filter(status='1')
-    
+
     if missing_list != None:
         return render(request, 'missing_list.html', {'items': missing_list, 'title':"Danh sách các trường hợp đang thất lạc"})
     else:
@@ -112,6 +114,14 @@ def reported_list(request):
 
 def logout_func(request):
     logout(request)
-    return HttpResponseRedirect('/')
+    messages.success(request,'Đã đăng xuất')
+    return HttpResponseRedirect('/login')
 def index(request):
     return HttpResponse('success')
+
+def missing_detail(request):
+    missing = MissingPeople.objects.filter(id=request.GET.get('missing_id'))
+    user = User.objects.filter(id=missing[0].user.id)
+    return render(request, 'missing_detail.html', {'missing': missing[0],'user': user[0] })
+ 
+        

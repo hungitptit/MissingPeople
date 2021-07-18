@@ -18,6 +18,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.static import static
+from django.urls.conf import include
 from center.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +30,9 @@ urlpatterns = [
     path('missing/', missing_list, name="missing"),
     path('', index, name='home'),
     path('missing_people', display_missing_people, name = 'missing_people'),
+    path('accounts/', include('allauth.urls')),
+    path('missingdetail', missing_detail, name="productdetail"),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
