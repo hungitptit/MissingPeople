@@ -114,7 +114,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend'
 ]
-SITE_ID = 3
+SITE_ID = 2
 
 LOGIN_REDIRECT_URL = '/missing'
 LOGOUT_REDIRECT_URL = '/missing'
@@ -170,6 +170,7 @@ CLOUDINARY_STORAGE = {
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 # https://cloudinary.com/console/c-2e02eaff27e1430877c2cd76f2c6cf
 # https://dashboard.heroku.com/apps/missingpeopleweb/deploy/github
 # For cloundinary
