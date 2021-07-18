@@ -28,7 +28,7 @@ urlpatterns = [
     path('logout/', logout_func, name='logout'),
     path('signup/', signup, name='signup'),
     path('missing/', missing_list, name="missing"),
-    path('', index, name='home'),
+    path('', missing_list, name='home'),
     path('missing_people', display_missing_people, name = 'missing_people'),
     path('accounts/', include('allauth.urls')),
     path('missingdetail', missing_detail, name="productdetail"),
