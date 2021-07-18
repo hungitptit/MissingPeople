@@ -69,7 +69,7 @@ class Address(models.Model):
         
         db_table = 'address'
 
-class MatchingPairs:
+class MatchingPairs(models.Model):
    id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
    missingpeople = models.ForeignKey(MissingPeople,on_delete= models.CASCADE, db_column='MissingPeopleID')
    reportedpeople = models.ForeignKey(ReportedPeople, on_delete=models.CASCADE, db_column='ReportedPeopleID')
