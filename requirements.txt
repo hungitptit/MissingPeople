@@ -12,3 +12,4 @@ whitenoise
 django-allauth
 gunicorn
 django-heroku
+Pillow
