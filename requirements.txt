@@ -13,3 +13,5 @@ django-allauth
 gunicorn
 django-heroku
 Pillow
+cloudinary
+django-cloudinary-storage

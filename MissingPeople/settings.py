@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+import cloudinary
+import cloudinary_storage
 import django_heroku
 import gunicorn
 from pathlib import Path
@@ -39,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-
+    'cloudinary',
+    'cloudinary_storage',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -158,5 +161,15 @@ SOCIALACCOUNT_FORMS = {
 }
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+# For cloundinary, comments it if run on localhost
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'viettel-vht',
+    'API_KEY': '215537491342487',
+    'API_SECRET': '2VSI_yxP6XcF2Sd08JdUhKr4eS4',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# For cloundinary
 django_heroku.settings(locals())
