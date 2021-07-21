@@ -114,7 +114,9 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend'
 ]
+# for heroku server
 SITE_ID = 4
+#SITE_ID = 3
 
 LOGIN_REDIRECT_URL = '/missing'
 LOGOUT_REDIRECT_URL = '/missing'
