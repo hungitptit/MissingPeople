@@ -17,15 +17,15 @@
           </li>
           {% if user.is_authenticated %}
           <li class="nav-item {% if 'page-user' in segment %} active {% endif %}">
-            <a class="nav-link" href="/page-user.html">
+            <a class="nav-link" href="{% url 'user' %}">
               <i class="material-icons">person</i>
-              <p>Thông tin cá nhân</p>
+              <p>Danh sách của tôi</p>
             </a>
           </li>
           {% endif %}
          
           <li class="nav-item {% if 'page-user' in segment %} active {% endif %}">
-            <a class="nav-link" href="/page-user.html">
+            <a class="nav-link" href="{% url 'upload' %}">
               <i class="material-icons">content_paste</i>
               <p>Đăng tìm | Báo cáo</p>
             </a>

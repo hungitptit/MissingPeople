@@ -38,12 +38,16 @@ class MissingPeople(models.Model):
     status = models.CharField(db_column='status',max_length=255, null=True,  blank=True)
     image = models.ImageField(db_column='image', null=True, upload_to='missing')
     description = models.CharField(db_column='description', blank=True, max_length=2550, null=True)
-   
+    location = models.CharField(db_column='location', max_length=255, blank=True, null=True)
+    representation = models.BinaryField(db_column='representation', blank=True, null= True)
+    date = models.DateField(db_column='date',blank=True, null= True)
+
     class Meta:
          
         db_table = 'MissingPeople'
 
 
+'''''
 class ReportedPeople(models.Model):
     id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
     user = models.ForeignKey(User,models.DO_NOTHING, db_column='UserID')
@@ -51,13 +55,13 @@ class ReportedPeople(models.Model):
     gender= models.CharField (db_column='gender', max_length=100, null=True, blank=True)
     status = models.CharField(db_column='status',max_length=255, null=True,  blank=True)
     image = models.ImageField(db_column='image', null=True, upload_to='reported')
-    location = models.CharField(db_column='location', max_length=255, blank=True, null=True)
-    
-
+    description = models.CharField(db_column='description', blank=True, max_length=2550, null=True) 
+    location = models.CharField(db_column='location', max_length=255, blank=True, null=True) 
+    representation = models.BinaryField(db_column='representation', blank=True, null= True)
     class Meta:
          
         db_table = 'ReportedPeople'
-
+'''
 
 class Address(models.Model):
     id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
@@ -69,11 +73,13 @@ class Address(models.Model):
         
         db_table = 'address'
 
-class MatchingPairs(models.Model):
+class MatchedPairs(models.Model):
    id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
-   missingpeople = models.ForeignKey(MissingPeople,on_delete= models.CASCADE, db_column='MissingPeopleID')
-   reportedpeople = models.ForeignKey(ReportedPeople, on_delete=models.CASCADE, db_column='ReportedPeopleID')
+   missingName = models.CharField(db_column='missing_name', max_length=255, null=True, blank=True)
+   reportedName = models.CharField(db_column='reported_name', max_length=255, null=True, blank=True)
+   missingImage = models.ImageField(db_column='missing_image', null=True, upload_to='matched')
+   reportedImage = models.ImageField(db_column='reported_image', null=True, upload_to='matched')
    class Meta:
         
-        db_table = 'MatchingPairs'
+        db_table = 'MatchedPairs'
 

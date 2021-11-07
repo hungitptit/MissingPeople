@@ -22,16 +22,19 @@ from django.urls.conf import include
 from center.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('image_upload', missing_image_view, name = 'image_upload'),
+    path('upload', missing_image_view, name = 'upload'),
     path('success', success, name = 'success'),
     path('login/', login_form, name='login'),
     path('logout/', logout_func, name='logout'),
     path('signup/', signup, name='signup'),
     path('missing/', missing_list, name="missing"),
+    path('user/', user_view, name = 'user'),
     path('', missing_list, name='home'),
     path('missing_people', display_missing_people, name = 'missing_people'),
     path('accounts/', include('allauth.urls')),
+    path('autosearch/<int:id>/', auto_search, name="autosearch"),
     path('missingdetail', missing_detail, name="productdetail"),
+   
 
 ]
 if settings.DEBUG:

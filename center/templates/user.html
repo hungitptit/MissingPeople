@@ -1,0 +1,203 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Missing {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<!-- Header -->
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+        </div>
+    </div>
+</div>
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-{{message.tags}}" role="alert">
+        {{ message }}
+    </div>
+{% endfor %}
+{% endif %} 
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="missing-tab" data-bs-toggle="tab" data-bs-target="#missing" type="button" role="tab" aria-controls="missing" aria-selected="true">Mất tích</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="reported-tab" data-bs-toggle="tab" data-bs-target="#reported" type="button" role="tab" aria-controls="reported" aria-selected="false">Báo cáo</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="waiting-tab" data-bs-toggle="tab" data-bs-target="#waiting" type="button" role="tab" aria-controls="waiting" aria-selected="false">Lưu nháp</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="missing" role="tabpanel" aria-labelledby="missing-tab">
+        <div class="container-fluid mt--7">
+
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header bg-transparent">
+                        <h3 class="mb-0">Danh sách người thân thất lạc</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <select id="product-type-filter" class="form-control form-control-alternative">
+                                        <option value="" disabled selected>Choose your product type</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-2">
+                                <a href="#!" class="btn btn-md btn-primary">Lọc</a>
+                            </div>
+                        </div>
+                        <div class="row">
+    
+                            {% for item in missing_list %}
+                            <div class="col-md-3 border px-3 py-3" style="cursor: pointer;">
+                                <a href="/missingdetail?missing_id={{ item.id }}">
+                                    <img style="height: 300px; width: auto;" src="{{item.image.url}}" class="img-thumbnail" alt="">
+                                    <div class="d-flex flex-row justify-content-start">
+                                        <a href="#"></a>
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-start">
+                                        <h3>{{ item.name }}</h3>
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-start">
+    
+                                        <h5>Giới tính : {{ item.gender }}</h5>
+                                    </div>
+                                  
+                                </a>
+                            </div>
+                            {% endfor %}
+                          
+                        </div>
+                    </div>
+                </div>
+    
+               
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="tab-pane fade" id="reported" role="tabpanel" aria-labelledby="reported-tab">
+        <div class="container-fluid mt--7">
+
+            <div class="row">
+                <div class="col">
+                    <div class="card shadow">
+                        <div class="card-header bg-transparent">
+                            <h3 class="mb-0">Danh sách người đã báo cáo</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <select id="product-type-filter" class="form-control form-control-alternative">
+                                            <option value="" disabled selected>Choose your product type</option>
+                                            
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-2">
+                                    <a href="#!" class="btn btn-md btn-primary">Lọc</a>
+                                </div>
+                            </div>
+                            <div class="row">
+        
+                                {% for item in reported_list %}
+                                <div class="col-md-3 border px-3 py-3" style="cursor: pointer;">
+                                    <a href="/missingdetail?missing_id={{ item.id }}">
+                                        <img style="height: 300px; width: auto;" src="{{item.image.url}}" class="img-thumbnail" alt="">
+                                        <div class="d-flex flex-row justify-content-start">
+                                            <a href="#"></a>
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-start">
+                                            <h3>{{ item.name }}</h3>
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-start">
+        
+                                            <h5>Giới tính : {{ item.gender }}</h5>
+                                        </div>
+                                      
+                                    </a>
+                                </div>
+                                {% endfor %}
+                              
+                            </div>
+                        </div>
+                    </div>
+        
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="waiting" role="tabpanel" aria-labelledby="waiting-tab">
+        <div class="container-fluid mt--7">
+
+            <div class="row">
+                <div class="col">
+                    <div class="card shadow">
+                        <div class="card-header bg-transparent">
+                            <h3 class="mb-0">Danh sách chờ</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <select id="product-type-filter" class="form-control form-control-alternative">
+                                            <option value="" disabled selected>Choose your product type</option>
+                                            
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-2">
+                                    <a href="#!" class="btn btn-md btn-primary">Lọc</a>
+                                </div>
+                            </div>
+                            <div class="row">
+        
+                                {% for item in waiting_list %}
+                                <div class="col-md-3 border px-3 py-3" style="cursor: pointer;">
+                                    <a href="/missingdetail?missing_id={{ item.id }}">
+                                        <img style="height: 300px; width: auto;" src="{{item.image.url}}" class="img-thumbnail" alt="">
+                                        <div class="d-flex flex-row justify-content-start">
+                                            <a href="#"></a>
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-start">
+                                            <h3>{{ item.name }}</h3>
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-start">
+        
+                                            <h5>Giới tính : {{ item.gender }}</h5>
+                                        </div>
+                                      
+                                    </a>
+                                </div>
+                                {% endfor %}
+                              
+                            </div>
+                        </div>
+                    </div>
+        
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+        {% endblock content %}
+
+        <!-- Specific JS goes HERE -->
+        {% block javascripts %}{% endblock javascripts %}

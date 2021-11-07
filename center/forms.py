@@ -6,31 +6,41 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 ADDRESS_CHOICES = ['Thành phố Hà Nội', 'Tỉnh Hà Giang', 'Tỉnh Cao Bằng', 'Tỉnh Bắc Kạn']
 STATUS_CHOICES = [
     ('0','Lưu nháp'), 
-    ('1','Đăng tìm')
+    ('1','Mất tích'),
+    ('2', 'Báo tìm gia đình')
 ]
 GENDER_CHOICES = [
     ('Nam','Nam',), 
     ('Nữ','Nữ',), 
-    ('Khác','Giới tính khác')]
+    ]
 class MissingForm(forms.ModelForm):
-    name = forms.CharField(max_length=255, label="Tên")
+    name = forms.CharField(max_length=255, label="Tên", widget=forms.TextInput(attrs={ 'style': 'width: 100%;', 'class': 'form-control'}))
     gender = forms.ChoiceField(
         label="Giới tính",
         required=False,
-        
+        widget=forms.Select(attrs={'class': 'form-control'}),
         choices=GENDER_CHOICES,
     )
-    description = forms.CharField(max_length=2550,widget=forms.Textarea, label="Mô tả")
-
+    description = forms.CharField(required=False,max_length=2550,widget=forms.Textarea(attrs={'class': 'form-control'}), label="Mô tả")
+    location = forms.CharField(max_length=2550, label="Vị trí", widget=forms.TextInput(attrs={ 'style': 'width: 100%;', 'class': 'form-control'}))
     status = forms.ChoiceField(
         required=False,
-       
+        label= "Trạng thái",
         choices=STATUS_CHOICES,
+        widget=forms.Select(attrs={'class': 'form-control'})
     )
-    image = forms.ImageField( label="Ảnh chân dung")
+    image = forms.ImageField( label="Ảnh chân dung",
+        widget=forms.FileInput(attrs={'style': 'width:100%;','class': 'form-control'})
+    )
+    x = forms.FloatField(widget=forms.HiddenInput(), required=False)
+    y = forms.FloatField(widget=forms.HiddenInput(), required=False)
+    width = forms.FloatField(widget=forms.HiddenInput(), required=False)
+    height = forms.FloatField(widget=forms.HiddenInput(), required=False)
     class Meta:
         model = MissingPeople
-        fields = ['name', 'image', 'gender', 'status']
+      
+        fields = ['name', 'image', 'gender', 'status', 'location', 'description','x','y','width', 'height']
+
 
 class ReportForm(forms.ModelForm):
     name = forms.CharField(max_length=255, label="Tên")
