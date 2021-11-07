@@ -16,6 +16,5 @@ Pillow
 cloudinary
 django-cloudinary-storage
 tensorflow
-base64
 opencv-python
 numpy
