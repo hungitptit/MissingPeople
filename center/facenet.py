@@ -568,7 +568,7 @@ def represent_image(img, auto=True, classifier = cv2.CascadeClassifier(cv2.data.
     np_img = np.array(img)
             #img = cv2.imread('D:/study/doan/MissingPeople'+data.image.url)
             #img = cv2.imread('..'+data.image.url)
-    #np_img = cv2.cvtColor(np_img,cv2.COLOR_RGB2BGR)
+    np_img = cv2.cvtColor(np_img,cv2.COLOR_RGB2BGR)
     sub_faces = []
     
     if (auto == True):
