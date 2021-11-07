@@ -115,8 +115,8 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend'
 ]
 # for heroku server
-#SITE_ID = 4
-SITE_ID = 3
+SITE_ID = 4
+#SITE_ID = 3
 LOGIN_REDIRECT_URL = '/missing'
 LOGOUT_REDIRECT_URL = '/missing'
 SOCIALACCOUNT_PROVIDERS = {
@@ -163,7 +163,7 @@ SOCIALACCOUNT_FORMS = {
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 # For cloundinary, comment it if run on localhost
-'''''
+
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'viettel-vht',
     'API_KEY': '215537491342487',
@@ -171,7 +171,7 @@ CLOUDINARY_STORAGE = {
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-'''
+
 # https://cloudinary.com/console/c-2e02eaff27e1430877c2cd76f2c6cf
 # https://dashboard.heroku.com/apps/missingpeopleweb/deploy/github
 # For cloundinary
