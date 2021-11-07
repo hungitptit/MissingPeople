@@ -15,7 +15,6 @@ django-heroku
 Pillow
 cloudinary
 django-cloudinary-storage
-PIL
 tensorflow
 base64
 opencv-python
