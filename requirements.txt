@@ -10,7 +10,6 @@ python-decouple
 gunicorn
 whitenoise
 django-allauth
-gunicorn
 django-heroku
 Pillow
 cloudinary
