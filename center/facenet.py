@@ -568,7 +568,7 @@ def represent_image(img, auto=True, classifier = cv2.CascadeClassifier(cv2.data.
     np_img = np.array(img)
             #img = cv2.imread('D:/study/doan/MissingPeople'+data.image.url)
             #img = cv2.imread('..'+data.image.url)
-    np_img = cv2.cvtColor(np_img,cv2.COLOR_RGB2BGR)
+    #np_img = cv2.cvtColor(np_img,cv2.COLOR_RGB2BGR)
     sub_faces = []
     
     if (auto == True):
@@ -591,7 +591,7 @@ def represent_image(img, auto=True, classifier = cv2.CascadeClassifier(cv2.data.
     if(len(sub_faces)==1):
         #model = _base_network()
         model = InceptionResNetV2()
-        print (os.path.join(settings.BASE_DIR,"facenet_weights.h5"))
+        #print (os.path.join(settings.BASE_DIR,"facenet_weights.h5"))
         model.load_weights(os.path.join(settings.BASE_DIR,"facenet_weights.h5"))
         prediction = model.predict(np.array(sub_faces))
         return prediction[0]

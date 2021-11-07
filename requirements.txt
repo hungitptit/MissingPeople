@@ -17,3 +17,4 @@ django-cloudinary-storage
 tensorflow-cpu==2.5.0
 opencv-python
 numpy
+libgl1-mesa-glx
