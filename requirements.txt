@@ -14,7 +14,7 @@ django-heroku
 Pillow
 cloudinary
 django-cloudinary-storage
-tensorflow-cpu==2.5.0
+tensorflow-cpu
 opencv-python
 numpy
 opencv-python
